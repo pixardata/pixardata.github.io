@@ -78,10 +78,10 @@ $(document).ready(function(){
           var mainChartColor = ['#00cc00', '#ffc0cb'];
           
           if (i == 0) {
-               mainChartColor = ['#cc3300', '#ff9933'];
+               mainChartColor = ['#000099', '#66ccff'];
           }
           else {
-               mainChartColor = ['#', '#cc33ff'];
+               mainChartColor = ['#cc3300', '#ff9933'];
           }
           
           if (bars == true) {
