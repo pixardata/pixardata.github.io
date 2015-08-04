@@ -37,6 +37,7 @@ $(document).ready(function(){
           $('.allContainers').css('width', '400px');
           console.log(gridClicked);
           $('.section-heading').hide();
+          $('#subtitle').hide();
           $('#braveToolTip').hide();
           $('.bg-primary').css("background-color", "#000000");
           $('#learnMore').css('background-color', '#ffffff');
@@ -55,6 +56,7 @@ $(document).ready(function(){
           gridClicked = false;
           Transparent = '#D8D8D8';
           $('.section-heading').show();
+          $('#subtitle').show();
           $('#braveToolTip').show();
           $('.bg-primary').css("background-color", "#000000");
           $('#learnMore').css('background-color', '#ffffff');
