@@ -1,0 +1,144 @@
+/* BRAM CSS FIle,2015*/
+body {
+    font-family: HelveticaNeue-Light;
+}
+h1 {
+    background:#FFFFFF;
+    padding-top: 350px;
+    padding-bottom: 350px;
+    text-align: center;
+    background: #000000;
+    color: #FFFFFF;
+}
+
+h3 {
+    color: #ffffff;  
+}
+
+.section-heading{
+    margin-top: 90px;
+}
+
+.btn-primary {
+    background: #FFFFFF;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+}
+
+.btn-info {
+    background: #FFFFFF;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+}
+
+section {
+    background: #000000;
+    color: #000000;
+}
+
+header {
+    min-height: 100%;
+}
+
+#container2{ 
+     display: none;
+}
+#container3{ 
+     display: none;
+}
+#container4{ 
+     display: none;
+}
+#container5{ 
+     display: none;
+}
+#container6{ 
+     display: none;
+}
+#container7{ 
+     display: none;
+}
+#container8{ 
+     display: none;
+}
+#container9{ 
+     display: none;
+}
+#container10{ 
+     display: none;
+}
+#container11{ 
+     display: none;
+}
+#container12{ 
+     display: none;
+}
+
+.allContainers {
+}
+
+.row{
+    margin-left: auto;
+
+}
+.col-xs-3{
+    /*float: left;*/
+    padding-left: 100px;
+    margin-right:60px;
+}
+
+.bg-primary {
+    background: #000000;
+}
+
+#Main{
+    display: none;
+}
+
+#braveToolTip {
+    color: #000000;
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em;
+    display: none;
+}
+
+#singleChartView {
+    width: 800px;
+    height: 800px;
+    margin-left: 375px;
+    margin-right: 500px
+}
+
+.graphHeading {
+    color: #ffffff;
+}
+
+#learnMore {
+    background: #ffffff;
+    color: #000000;
+}
+
+#moreInfo{
+    height:700px;
+    margin-left: 180px;
+    margin-right: 180px;
+    color: #000000;
+}
+
+p {
+    font-size: 23px;
+    padding-bottom: 50px;
+    padding-top:10px;
+    text-align: center;
+}
+
+.text-muted {
+    font-size: 16px;
+}
+
+.thanks {
+    color: #ffffff;
+}

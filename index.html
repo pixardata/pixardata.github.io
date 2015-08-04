@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pixar Data Viz</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="script.js" type="text/javascript"></script>
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Visualizing the Gender Gap </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+						<a class="page-scroll" href="#learnMore">About</a>
+                    </li>
+                    <li>
+						<a class="page-scroll" href="#about">Averages</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Who we are</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+	<script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://code.highcharts.com/highcharts-more.js"></script>
+	<script src="http://code.highcharts.com/modules/data.js"></script>
+	<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+	<header>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <div id="info"></div>
+		<div id="totalGender">
+			        <div id="totalGender">
+		<h1 style="font-size: 50px;">How has Pixar's gender ratio changed over the last 20 years?<br/><br/>How have the number of women in each department changed over time?</h1>
+    </header>    
+	
+	<section class= 'bg-primary' id="learnMore">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading" >Learn More</h2>
+					<hr class="light">
+                    <p class="text-faded"></p>
+                </div>
+				<div style="color:black; font-size: 20px">
+					<p id='moreInfo'> In 2009, 158.6 million women were living in the United States.
+					Women make up more than 51% of the work force but only 26% of women occupied one of
+					the 3,816,00 computer-related occupations. Influenced by these numbers, we decided it would
+					be interesting to see the percentage of women employed for the Pixar films throughout the years. We found
+					unexpected trends from the data we gathered. Look at the graphs and see if you can find them as well. <br/> <br/>However, it is important to note that all of our data is sourced from imdb, which relies on self reporting, and not all departments are correlated to official Pixar departments. </p>
+				</div>
+            </div>
+        </div>
+    </section>
+	
+    <section class="bg-primary" id="about" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading" class='graphHeading'>Average Men-Women Ratio per Movie</h2>
+                    <hr class="light">
+                    <p class="text-faded"></p>
+                </div>
+            </div>
+        </div>
+		<a href="#" data-toggle="tooltip" id="braveToolTip" title="Wow! Brave has a higher % of women than any other movie. That's pretty interesting">Our observation 1</a>
+		<div id="container1" style="min-width: 1000px; max-width: 1000px; height: 600px; margin: 0 auto"></div>	
+				<div style="display:none">
+						<p> Total Gender</p>
+						<table id="table1" border="0" cellspacing="0" cellpadding="0">
+							<tr nowrap bgcolor="#CCCCFF">
+								<th colspan="9" class="hdr">Table of Frequencies (percent)</th>
+							</tr>
+							<tr nowrap bgcolor="#CCCCFF">
+								<th class="freq">Movie</th>
+								<th class="freq">male</th>
+								<th class="freq">female</th>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">Toy Story </td>
+								<td class="data">70.1067615658</td>
+								<td class="data">29.8932384342</td>
+								
+							</tr>		
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">A Bug's Life</td>
+								<td class="data">71.3426853707</td>
+								<td class="data">28.6573146293</td>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">Monster Inc.</td>
+								<td class="data">74.749498998</td>
+								<td class="data">25.250501002</td>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">Toy Story 2</td>
+								<td class="data">75.7575757576</td>
+								<td class="data">24.2424242424</td>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">Finding Nemo</td>
+								<td class="data">70.2127659574</td>
+								<td class="data">29.7872340426</td>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">The Incredibles</td>
+								<td class="data">79.9163179916</td>
+								<td class="data">20.0836820084</td>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">Cars</td>
+								<td class="data">79.6052631579</td>
+								<td class="data">20.3947368421</td>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">Ratatouille</td>
+								<td class="data">76.526458616</td>
+								<td class="data">23.473541384</td>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">WALL-E</td>
+								<td class="data">80.1418439716</td>
+								<td class="data">19.8581560284</td>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">Up</td>
+								<td class="data">70.9289617486</td>
+								<td class="data">29.0710382514</td>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">Toy Story 3</td>
+								<td class="data">76.4705882353</td>
+								<td class="data">23.5294117647</td>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDFFFF">
+								<td class="dir">Cars 2</td>
+								<td class="data">77.3778920308</td>
+								<td class="data">22.6221079692</td>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">Brave</td>
+								<td class="data">68.0473372781</td>
+								<td class="data">31.9526627219</td>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">Monsters University</td>
+								<td class="data">70.6575073602</td>
+								<td class="data">29.3424926398</td>
+								
+							</tr>
+							<tr nowrap bgcolor="#DDDDDD">
+								<td class="dir">Inside Out</td>
+								<td class="data">75.4838709677</td>
+								<td class="data">24.5161290323</td>
+							</tr>
+							
+						
+						</table>
+				</div>
+			</div>
+    </section>
+	<section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading" class='graphHeading'>Average Men-Women Ratio per Department</h2>
+                    <hr class="light">
+                    <p class="text-faded"></p>
+                </div>
+						
+				<!--<div class="btn-group" role="group">
+					<button id='grid' type="button" class="btn btn-primary">GridView</button>
+					<button id='Main' type="button" class="btn btn-primary">Back to Main</button>
+					<button id = 'barCharts' type="button" class="btn btn-info"> Bar Charts </button>
+				</div-->
+			<div class="row">
+				<div id='singleChartView' style="color:black;">
+					
+				</div>
+			</div>
+
+            </div>
+			<div class="btn-group" role="group">
+					<button id='grid' type="button" class="btn btn-primary">GridView</button>
+					<button id='Main' type="button" class="btn btn-primary">Back to Main</button>
+					<button id = 'barCharts' type="button" class="btn btn-info"> Bar Charts </button>
+				</div>
+        </div>
+		<div id='allGraphs'>
+				<div class='row'>
+					<div id="animation" class='col-xs-3'>
+						<div id="container2" class="allContainers" style="min-width: 400px; max-width: 500px; height: 450px; margin: 0 auto"></div>
+						<div style="display:none">
+							
+							<table id="table2" border="0" cellspacing="0" cellpadding="0">
+								<tr nowrap bgcolor="#CCCCFF">
+									<th colspan="9" class="hdr">Table of Frequencies (percent)</th>
+								</tr>
+								<tr nowrap bgcolor="#CCCCFF">
+									<th class="freq">Gender</th>
+									<th class="freq">male </th>
+									<th class="freq">female </th>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story </td>
+									<td class="data">41</td>
+									<td class="data">9</td>
+								</tr>		
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">A Bug's Life</td>
+									<td class="data">97</td>
+									<td class="data">20</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 2</td>
+									<td class="data">85</td>
+									<td class="data">19</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters Inc.</td>
+									<td class="data">81</td>
+									<td class="data">13</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Finding Nemo</td>
+									<td class="data">59</td>
+									<td class="data">7</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">The Incredibles</td>
+									<td class="data">72</td>
+									<td class="data">10</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Cars</td>
+									<td class="data">42</td>
+									<td class="data">9</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Ratatouille</td>
+									<td class="data">105</td>
+									<td class="data">20</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">WALL-E</td>
+									<td class="data">50</td>
+									<td class="data">7</td>
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Up</td>
+									<td class="data">91</td>
+									<td class="data">13</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 3</td>
+									<td class="data">72</td>
+									<td class="data">13</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Cars 2</td>
+									<td class="data">64</td>
+									<td class="data">8</td>	
+								</tr>
+								<tr nowrap>
+									<td class="dir">Brave</td>
+									<td class="data">183</td>
+									<td class="data">41</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters University</td>
+									<td class="data">232</td>
+									<td class="data">63</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div id='art' class='col-xs-3'>
+						<div id="container3" class="allContainers" style="min-width: 400px; max-width: 800px; height: 450px; margin: 0 auto"></div>
+						
+						<div style="display:none">
+							<table id="table3" border="0" cellspacing="0" cellpadding="0">
+								<tr nowrap bgcolor="#CCCCFF">
+									<th colspan="9" class="hdr">Table of Frequencies</th>
+								</tr>
+								<tr nowrap bgcolor="#CCCCFF">
+									<th class="freq">Movie</th>
+									<th class="freq">male</th>
+									<th class="freq">female</th>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story </td>
+									<td class="data">4</td>
+									<td class="data">4</td>
+								</tr>		
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">A Bug's Life</td>
+									<td class="data">24</td>
+									<td class="data">10</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 2</td>
+									<td class="data">26</td>
+									<td class="data">9</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters, Inc.</td>
+									<td class="data">37</td>
+									<td class="data">9</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Finding Nemo</td>
+									<td class="data">30</td>
+									<td class="data">3</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">The Incredibles</td>
+									<td class="data">16</td>
+									<td class="data">4</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Cars</td>
+									<td class="data">23</td>
+									<td class="data">5</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Ratatouille</td>
+									<td class="data">56</td>
+									<td class="data">13</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">WALL-E</td>
+									<td class="data">18</td>
+									<td class="data">4</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Up</td>
+									<td class="data">34</td>
+									<td class="data">8</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 3</td>
+									<td class="data">10</td>
+									<td class="data">8</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Cars 2</td>
+									<td class="data">16</td>
+									<td class="data">6</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Brave</td>
+									<td class="data">22</td>
+									<td class="data">9</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters University</td>
+									<td class="data">0</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Inside Out</td>
+									<td class="data">6</td>
+									<td class="data">1</td>
+								</tr>		
+								
+							</table>
+						</div>
+					</div>
+					<div id='Camera' class='col-xs-3'>
+						<div id="container4" class="allContainers" style="min-width: 400px; max-width: 800px; height: 450px; margin: 0 auto"></div>
+						
+						<div style="display:none">
+							
+							<table id="table4" border="0" cellspacing="0" cellpadding="0">
+								<tr nowrap bgcolor="#CCCCFF">
+									<th colspan="9" class="hdr">Table of Frequencies (percent)</th>
+								</tr>
+								<tr nowrap bgcolor="#CCCCFF">
+									<th class="freq">Gender</th>
+									<th class="freq">male </th>
+									<th class="freq">female </th>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story </td>
+									<td class="data">2</td>
+									<td class="data">0</td>
+								</tr>		
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">A Bug's Life</td>
+									<td class="data">29</td>
+									<td class="data">15</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 2</td>
+									<td class="data">24</td>
+									<td class="data">13</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters Inc.</td>
+									<td class="data">7</td>
+									<td class="data">3</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Finding Nemo</td>
+									<td class="data">8</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">The Incredibles</td>
+									<td class="data">1</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Cars</td>
+									<td class="data">3</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Ratatouille</td>
+									<td class="data">6</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">WALL-E</td>
+									<td class="data">8</td>
+									<td class="data">1</td>
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Up</td>
+									<td class="data">4</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 3</td>
+									<td class="data">2</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Cars 2</td>
+									<td class="data">1</td>
+									<td class="data">0</td>	
+								</tr>
+								<tr nowrap>
+									<td class="dir">Brave</td>
+									<td class="data">4</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters University</td>
+									<td class="data">2</td>
+									<td class="data">0</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class='row'>
+					<div id = 'casting' class='col-xs-3'>
+						<div id="container5" class="allContainers" style="min-width: 400px; max-width: 800px; height: 450px; margin: 0 auto"></div>
+					
+						<div style="display:none">
+							<table id="table5" border="0" cellspacing="0" cellpadding="0">
+								<tr nowrap bgcolor="#CCCCFF">
+									<th colspan="9" class="hdr">Table of Frequencies</th>
+								</tr>
+								<tr nowrap bgcolor="#CCCCFF">
+									<th class="freq">Movie</th>
+									<th class="freq">male</th>
+									<th class="freq">female</th>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story </td>
+									<td class="data">0</td>
+									<td class="data">4</td>
+								</tr>		
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">A Bug's Life</td>
+									<td class="data">0</td>
+									<td class="data">4</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 2</td>
+									<td class="data">0</td>
+									<td class="data">3</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters, Inc.</td>
+									<td class="data">1</td>
+									<td class="data">2</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Finding Nemo</td>
+									<td class="data">3</td>
+									<td class="data">2</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">The Incredibles</td>
+									<td class="data">2</td>
+									<td class="data">2</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Cars</td>
+									<td class="data">1</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Ratatouille</td>
+									<td class="data">1</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">WALL-E</td>
+									<td class="data">1</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Up</td>
+									<td class="data">2</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 3</td>
+									<td class="data">1</td>
+									<td class="data">3</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Cars 2</td>
+									<td class="data">1</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Brave</td>
+									<td class="data">2</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters University</td>
+									<td class="data">1</td>
+									<td class="data">3</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Inside Out</td>
+									<td class="data">1</td>
+									<td class="data">1</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div id = 'editorial' class='col-xs-3'>
+						<div id="container6" class="allContainers" style="min-width: 400px; max-width: 800px; height: 450px; margin: 0 auto"></div>
+					
+						<div style="display:none">
+							<table id="table6" border="0" cellspacing="0" cellpadding="0">
+								<tr nowrap bgcolor="#CCCCFF">
+									<th colspan="9" class="hdr">Table of Frequencies</th>
+								</tr>
+								<tr nowrap bgcolor="#CCCCFF">
+									<th class="freq">Movie</th>
+									<th class="freq">male</th>
+									<th class="freq">female</th>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story </td>
+									<td class="data">6</td>
+									<td class="data">8</td>
+								</tr>		
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">A Bug's Life</td>
+									<td class="data">13</td>
+									<td class="data">10</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 2</td>
+									<td class="data">21</td>
+									<td class="data">9</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters, Inc.</td>
+									<td class="data">16</td>
+									<td class="data">7</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Finding Nemo</td>
+									<td class="data">15</td>
+									<td class="data">8</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">The Incredibles</td>
+									<td class="data">9</td>
+									<td class="data">4</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Cars</td>
+									<td class="data">17</td>
+									<td class="data">6</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Ratatouille</td>
+									<td class="data">23</td>
+									<td class="data">9</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">WALL-E</td>
+									<td class="data">17</td>
+									<td class="data">9</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Up</td>
+									<td class="data">23</td>
+									<td class="data">14</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 3</td>
+									<td class="data">9</td>
+									<td class="data">9</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Cars 2</td>
+									<td class="data">13</td>
+									<td class="data">8</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Brave</td>
+									<td class="data">27</td>
+									<td class="data">18</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters University</td>
+									<td class="data">24</td>
+									<td class="data">10</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Inside Out</td>
+									<td class="data">9</td>
+									<td class="data">6</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+						<div id = 'managment' class='col-xs-3'>
+						<div id="container7" class="allContainers" style="min-width:400px; max-width: 800px; height: 450px; margin: 0 auto"></div>
+					
+						<div style="display:none">
+							<table id="table7" border="0" cellspacing="0" cellpadding="0">
+								<tr nowrap bgcolor="#CCCCFF">
+								<th colspan="9" class="hdr">Table of Frequencies</th>
+								</tr>
+								<tr nowrap bgcolor="#CCCCFF">
+									<th class="freq">Movie</th>
+									<th class="freq">male</th>
+									<th class="freq">female</th>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story</td>
+									<td class="data">0</td>
+									<td class="data">2</td>
+								</tr>		
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">A Bug's Life</td>
+									<td class="data">1</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 2</td>
+									<td class="data">2</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters, Inc.</td>
+									<td class="data">1</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Finding Nemo</td>
+									<td class="data">4</td>
+									<td class="data">5</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">The Incredibles</td>
+									<td class="data">0</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Cars</td>
+									<td class="data">2</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Ratatouille</td>
+									<td class="data">3</td>
+									<td class="data">3</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">WALL-E</td>
+									<td class="data">1</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Up</td>
+									<td class="data">3</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 3</td>
+									<td class="data">1</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Cars 2</td>
+									<td class="data">1</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Brave</td>
+									<td class="data">4</td>
+									<td class="data">2</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters University</td>
+									<td class="data">5</td>
+									<td class="data">1</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class = 'row'>
+					<div id = 'sound' class='col-xs-3'>
+						<div id="container8" class="allContainers" style="min-width: 400px; max-width: 800px; height: 450px; margin: 0 auto"></div>
+					
+						<div style="display:none">
+							<table id="table8" border="0" cellspacing="0" cellpadding="0">
+								<tr nowrap bgcolor="#CCCCFF">
+									<th colspan="9" class="hdr">Number</th>
+								</tr>
+								<tr nowrap bgcolor="#CCCCFF">
+									<th class="freq">Gender</th>
+									<th class="freq">male</th>
+									<th class="freq">female</th>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story </td>
+									<td class="data">41</td>
+									<td class="data">9</td>							
+								</tr>		
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">A Bug's Life</td>
+									<td class="data">97</td>
+									<td class="data">20</td>
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 2</td>
+									<td class="data">85</td>
+									<td class="data">19</td>
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters Inc.</td>
+									<td class="data">81</td>
+									<td class="data">13</td>
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Finding Nemo</td>
+									<td class="data">59</td>
+									<td class="data">7</td>
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">The Incredibles</td>
+									<td class="data">72</td>
+									<td class="data">10</td>
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Cars</td>
+									<td class="data">42</td>
+									<td class="data">9</td>
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Ratatouille</td>
+									<td class="data">105</td>
+									<td class="data">20</td>
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">WALL-E</td>
+									<td class="data">50</td>
+									<td class="data">7</td>
+									
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Up</td>
+									<td class="data">91</td>
+									<td class="data">13</td>
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 3</td>
+									<td class="data">72</td>
+									<td class="data">13</td>
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Cars 2</td>
+									<td class="data">64</td>
+									<td class="data">8</td>
+										
+								</tr>
+								<tr nowrap>
+									<td class="dir">Brave</td>
+									<td class="data">183</td>
+									<td class="data">41</td>
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters University</td>
+									<td class="data">232</td>
+									<td class="data">63</td>
+									
+								</tr>
+							</table>
+						</div>
+					</div>
+					
+					<div id = 'Directors and Producers' class='col-xs-3'>
+						<div id="container9" class="allContainers" style="min-width: 400px; max-width: 800px; height: 450px; margin: 0 auto"></div>
+					
+						<div style="display:none">
+							<table id="table9" border="0" cellspacing="0" cellpadding="0">
+								<tr nowrap bgcolor="#CCCCFF">
+									<th colspan="9" class="hdr">Table of Frequencies</th>
+								</tr>
+								<tr nowrap bgcolor="#CCCCFF">
+									<th class="freq">Year</th>
+									<th class="freq">male</th>
+									<th class="freq">female</th>
+								</tr>
+								<tr nowrap>
+									<td class="dir">1995</td>
+									<td class="data">4</td>
+									<td class="data">1</td>
+								</tr>		
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">1998</td>
+									<td class="data">3</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">1999</td>
+									<td class="data">3</td>
+									<td class="data">3</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">2001</td>
+									<td class="data">5</td>
+									<td class="data">3</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">2003</td>
+									<td class="data">4</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">2004</td>
+									<td class="data">3</td>
+									<td class="data">2</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">2006</td>
+									<td class="data">3</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">2007</td>
+									<td class="data">4</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">2008</td>
+									<td class="data">4</td>
+									<td class="data">2</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">2009</td>
+									<td class="data">5</td>
+									<td class="data">2</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">2010</td>
+									<td class="data">2</td>
+									<td class="data">2</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">2011</td>
+									<td class="data">3</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">2012</td>
+									<td class="data">5</td>
+									<td class="data">3</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">2013</td>
+									<td class="data">5</td>
+									<td class="data">2</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">2015</td>
+									<td class="data">5</td>
+									<td class="data">0</td>
+								</tr>		
+								
+							</table>
+						</div>
+					</div>
+					
+					<div id = 'Visual Effects' class='col-xs-3'>
+						<div id="container10" class="allContainers" style="min-width: 400px; max-width: 800px; height: 450px; margin: 0 auto"></div>
+					
+						<div style="display:none">
+							<table id="table10" border="0" cellspacing="0" cellpadding="0">
+								<tr nowrap bgcolor="#CCCCFF">
+									<th colspan="9" class="hdr">Table of Frequencies (percent)</th>
+								</tr>
+								<tr nowrap bgcolor="#CCCCFF">
+									<th class="freq">Gender</th>
+									<th class="freq">male </th>
+									<th class="freq">female </th>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story</td>
+									<td class="data">31</td>
+									<td class="data">10</td>
+									
+									
+								</tr>		
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">A Bug's Life</td>
+									<td class="data">97</td>
+									<td class="data">20</td>
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 2</td>
+									<td class="data">36</td>
+									<td class="data">15</td>
+									
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters Inc.</td>
+									<td class="data">43</td>
+									<td class="data">9</td>
+									
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Finding Nemo</td>
+									<td class="data">59</td>
+									<td class="data">7</td>
+									
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">The Incredibles</td>
+									<td class="data">45</td>
+									<td class="data">10</td>
+									
+								
+								</tr>
+								<tr nowrap>
+									<td class="dir">Cars</td>
+									<td class="data">47</td>
+									<td class="data">10</td>
+									
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Ratatouille</td>
+									<td class="data">77</td>
+									<td class="data">14</td>
+									
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">WALL-E</td>
+									<td class="data">47</td>
+									<td class="data">9</td>
+									
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Up</td>
+									<td class="data">55</td>
+									<td class="data">9</td>
+									
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 3</td>
+									<td class="data">50</td>
+									<td class="data">12</td>
+									
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Cars 2</td>
+									<td class="data">49</td>
+									<td class="data">7</td>
+									
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Brave</td>
+									<td class="data">59</td>
+									<td class="data">18</td>
+									
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters University</td>
+									<td class="data">60</td>
+									<td class="data">7</td>
+									
+									
+								</tr>	
+							</table>
+						</div>
+					</div>
+				</div>
+				
+				<div class='row'>
+					<div id = 'Writing' class='col-xs-3'>
+						<div id="container11" class="allContainers" style="min-width: 400px; max-width: 800px; height: 450px; margin: 0 auto"></div>
+					
+						<div style="display:none">
+							<table id="table11" border="0" cellspacing="0" cellpadding="0">
+								<tr nowrap bgcolor="#CCCCFF">
+									<th colspan="9" class="hdr">Table of Frequencies</th>
+								</tr>
+								<tr nowrap bgcolor="#CCCCFF">
+									<th class="freq">Movie</th>
+									<th class="freq">male</th>
+									<th class="freq">feMale</th>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story</td>
+									<td class="data">8</td>
+									<td class="data">0</td>
+									
+								</tr>		
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">A Bug's Life</td>
+									<td class="data">10</td>
+									<td class="data">0</td>
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 2</td>
+									<td class="data">7</td>
+									<td class="data">1</td>
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters, Inc.</td>
+									<td class="data">8</td>
+									<td class="data">1</td>
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Finding Nemo</td>
+									<td class="data">4</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">The Incredibles</td>
+									<td class="data">1</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Cars</td>
+									<td class="data">14</td>
+									<td class="data">1</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Ratatouille</td>
+									<td class="data">4</td>
+									<td class="data">3</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">WALL-E</td>
+									<td class="data">4</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Up</td>
+									<td class="data">5</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 3</td>
+									<td class="data">4</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Cars 2</td>
+									<td class="data">4</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Brave</td>
+									<td class="data">3</td>
+									<td class="data">3</td>
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters University</td>
+									<td class="data">6</td>
+									<td class="data">0</td>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Inside Out</td>
+									<td class="data">5</td>
+									<td class="data">2</td>
+								</tr>				
+								
+							</table>
+						</div>
+					</div>
+					
+					<div id="Average" class='col-xs-3'>
+						<div id="container13" class="allContainers" style="min-width: 400px; max-width: 800px; height: 450px; margin: 0 auto"></div>
+							
+						<div style="display:none">
+								
+								<table id="table13" border="0" cellspacing="0" cellpadding="0">
+									<tr nowrap bgcolor="#CCCCFF">
+										<th colspan="9" class="hdr">Table of Frequencies (percent)</th>
+									</tr>
+									<tr nowrap bgcolor="#CCCCFF">
+										<th class="freq">category</th>
+										<th class="freq">male</th>
+										<th class="freq">female</th>
+										
+									</tr>
+									<tr nowrap bgcolor="#DDDDDD">
+										<td class="dir">Animation</td>
+										<td class="data">83.354839</td>
+										<td class="data">16.645161</td>
+										
+									</tr>		
+									<tr nowrap bgcolor="#DDDDDD">
+										<td class="dir">Art</td>
+										<td class="data">77.464789</td>
+										<td class="data">22.535211</td>
+										
+									</tr>
+									<tr nowrap bgcolor="#DDDDDD">
+										<td class="dir">Camera</td>
+										<td class="data">71.084337</td>
+										<td class="data">28.915663</td>
+										
+									</tr>
+									<tr nowrap bgcolor="#DDDDDD">
+										<td class="dir">Casting</td>
+										<td class="data">38.297872</td>
+										<td class="data">61.702128</td>
+										
+									</tr>
+									<tr nowrap bgcolor="#DDDDDD">
+										<td class="dir">Editorial</td>
+										<td class="data">65.656566</td>
+										<td class="data">34.343434</td>
+										
+									</tr>
+									<tr nowrap bgcolor="#DDDDDD">
+										<td class="dir">Management</td>
+										<td class="data">58.333333</td>
+										<td class="data">41.666667</td>
+										
+									</tr>
+									<tr nowrap bgcolor="#DDDDDD">
+										<td class="dir">Sound</td>
+										<td class="data">81.777278</td>
+										<td class="data">18.222722</td>
+										
+									</tr>
+									<tr nowrap bgcolor="#DDDDDD">
+										<td class="dir">Directors and Producers</td>
+										<td class="data">69.879518</td>
+										<td class="data">30.120482</td>
+										
+									</tr>
+									<tr nowrap bgcolor="#DDDDDD">
+										<td class="dir">Visual</td>
+										<td class="data">75.417661</td>
+										<td class="data">24.582339</td>
+										
+									</tr>
+									<tr nowrap bgcolor="#DDDDDD">
+										<td class="dir">Writing</td>
+										<td class="data">88.775510</td>
+										<td class="data">11.224490</td>
+										
+									</tr>
+									<tr nowrap bgcolor="#DDDDDD">
+										<td class="dir">Other</td>
+										<td class="data">67.515238</td>
+										<td class="data">32.484762</td>
+										
+									</tr>
+								</table>
+						</div>
+					</div>
+						
+					<div id = 'Other' class='col-xs-3'>
+						
+						<div id="container12" class="allContainers" style="min-width: 400px; max-width: 800px; height: 450px; margin: 0 auto"></div>
+		
+						<div style="display:none">
+						
+							<table id="table12" border="0" cellspacing="0" cellpadding="0">
+								<tr nowrap bgcolor="#CCCCFF">
+									<th colspan="9" class="hdr">Table of Frequencies (value)</th>
+								</tr>
+								<tr nowrap bgcolor="#CCCCFF">
+									<th class="freq">Direction</th>
+									<th class="freq">male</th>
+									<th class="freq">female</th>
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story (1995)</td>
+									<td class="data">40</td>
+									<td class="data">23</td>
+									
+									
+								</tr>		
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">A Bug's Life (1998)</td>
+									<td class="data">76</td>
+									<td class="data">31</td>
+									
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 2 (1999)</td>
+									<td class="data">108</td>
+									<td class="data">39</td>
+									
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monster's Inc (2001)</td>
+									<td class="data">102</td>
+									<td class="data">36</td>
+									
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Finding Nemo (2003)</td>
+									<td class="data">171</td>
+									<td class="data">75</td>
+									
+								
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">The Incredibles (2004)</td>
+									<td class="data">108</td>
+									<td class="data">27</td>
+									
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Cars (2006)</td>
+									<td class="data">103</td>
+									<td class="data">38</td>
+									
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Ratatouille (2007)</td>
+									<td class="data">146</td>
+									<td class="data">55</td>
+									
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">WALL-E (2008)</td>
+									<td class="data">74</td>
+									<td class="data">23</td>
+									
+									
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Up (2009)</td>
+									<td class="data">269</td>
+									<td class="data">163</td>
+									
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Toy Story 3 (2010)</td>
+									<td class="data">74</td>
+									<td class="data">24</td>
+									
+								
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Cars 2 (2011)</td>
+									<td class="data">67</td>
+									<td class="data">30</td>
+									
+									
+								</tr>
+								<tr nowrap>
+									<td class="dir">Brave (2012)</td>
+									<td class="data">218</td>
+									<td class="data">152</td>
+									
+								
+								</tr>
+								<tr nowrap bgcolor="#DDDDDD">
+									<td class="dir">Monsters University (2013)</td>
+									<td class="data">316</td>
+									<td class="data">182</td>
+									
+								
+								</tr>
+								<tr nowrap>
+									<td class="dir">Inside Out (2015)</td>
+									<td class="data">11</td>
+									<td class="data">8</td>
+									
+								
+								</tr>		
+							</table>
+						</div>
+					</div>
+				</div>
+		</div>
+    </section>
+	
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Creators</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
+                        <h3>Marivi Sifuentes</h3>
+                        <img src="marivi.JPG" style="width:200px;">
+						<p class="text-muted">Mayonaisse + Zayn = Heaven <br/> #OrganicMom</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                        <h3>Regina Weinreb</h3>
+						<img src="regina.JPG" style="width:200px;">
+                        <p class="text-muted">I will make you eat paper #proZayn #antiMayonaisse</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                        <h3>Anona Gupta</h3>
+						<img src="anona.JPG" style="width:200px;">
+                        <p class="text-muted">I'm going to kill that otterpop</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                        <h3>Brenda Gutierrez</h3>
+						<img src="IMG_4477.JPG" style="width:200px;">
+                        <p class="text-muted">I love turtles</p>
+                    </div>
+                </div>
+            </div>
+			
+        </div>
+    </section>
+
+    <section class="no-padding" id="portfolio">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content"></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+            </div>
+        </div>
+    </aside>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class='thanks'>Special Thanks!</h2>
+                    <hr class="primary">
+                    <p class='thanks'>Michael Frederickson<br/>Laura Savage<br/>
+					Jeff Stern<br/>
+					Leslie Li<br/>
+					Ilona Bodnar</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x wow bounceIn"></i>
+                    
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src= "js/bootsrap.transition.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+
+</body>
+
+</html>
